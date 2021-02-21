@@ -12,9 +12,7 @@
             box-sizing: border-box;
         }
         #canvas{
-            height: 100vh;
-            width: 100%;
-            border: 1px solid red;
+            display: block;
         }
         .point{
             position: absolute;
@@ -27,21 +25,30 @@
     <title>Canvas</title>
 </head>
 <body>
-    <div id="canvas">
-    </div>
+    <canvas id="canvas">
+    </canvas>
     <script>
-        canvas.onclick = (e)=>{
-            console.log(e)
-            console.log(e.clientX);
-            console.log(e.clientY);
+        canvas.width = document.documentElement.clientWidth
+        canvas.height = document.documentElement.clientHeight
 
-            let div = document.createElement("div")
-            div.classList.add("point")
-            div.style.left = e.clientX + "px"
-            div.style.top = e.clientY + "px"
-            div.style.transform = 'translate(-3px,-3px)'
-            canvas.appendChild(div)
+        let ctx = canvas.getContext("2d");
+        let painting = false;
+        //画线
+        canvas.onmousedown = ()=>{
+            painting = true;
         }
+        canvas.onmouseup = ()=>{
+            painting = false;
+        }
+        canvas.onmousemove = (e)=>{
+            if (painting === true){
+                ctx.beginPath();
+                ctx.arc(e.clientX, e.clientY , 5, 0, 2 * Math.PI, false);
+                ctx.stroke();
+                ctx.fill();
+            }
+        }
+
     </script>
 </body>
 </html>
