@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Canvas</title>
+</head>
+<body>
+    <canvas id="canvas">
+
+    </canvas>
+    <script>
+        const canvas = document.querySelector("#canvas");
+        const  ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = "green";
+        ctx.fillRect(10,10,150,100);
+    </script>
+</body>
+</html>
